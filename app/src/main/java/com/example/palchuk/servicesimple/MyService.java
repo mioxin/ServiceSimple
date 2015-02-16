@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
+import java.util.concurrent.TimeUnit;
+
 public class MyService extends Service {
     final String LOG_TAG = "myLogs";
     public void onCreate() {
@@ -25,7 +27,21 @@ public class MyService extends Service {
         return null;
     }
     void someTask() {
+        new Thread(new Runnable() {
+            public void run() {
+                for (int i = 1; i<=5; i++) {
+                    Log.d(LOG_TAG, "i = " + i);
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                stopSelf();
+            }
+        }).start();
     }
+
     public MyService() {
     }
 

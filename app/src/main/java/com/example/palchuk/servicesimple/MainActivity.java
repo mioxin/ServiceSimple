@@ -3,17 +3,28 @@ package com.example.palchuk.servicesimple;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
+    public final static String FILE_NAME = "filename";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        TextView tv = (TextView) findViewById(R.id.tv);
+
+        Intent intent = getIntent();
+
+        String fileName = intent.getStringExtra(FILE_NAME);
+        if (!TextUtils.isEmpty(fileName))
+            tv.setText(fileName);
     }
 
 
@@ -42,8 +53,8 @@ public class MainActivity extends ActionBarActivity {
     public void onclickStart(View view) {
         //startService(new Intent(this, MyService.class));
         startService(new Intent(this, MyService.class).putExtra("time", 7));
-        startService(new Intent(this, MyService.class).putExtra("time", 2));
-        startService(new Intent(this, MyService.class).putExtra("time", 4));
+//        startService(new Intent(this, MyService.class).putExtra("time", 2));
+//        startService(new Intent(this, MyService.class).putExtra("time", 4));
     }
 
     public void onclickStop(View view) {

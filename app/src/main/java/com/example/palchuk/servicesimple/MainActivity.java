@@ -23,8 +23,7 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = getIntent();
 
         String fileName = intent.getStringExtra(FILE_NAME);
-        if (!TextUtils.isEmpty(fileName))
-            tv.setText(fileName);
+        if (!TextUtils.isEmpty(fileName)) tv.setText(fileName);
     }
 
 

@@ -46,7 +46,7 @@ public class MyService extends Service {
             Log.d(LOG_TAG, "MyRun#" + startId + " create");
         }
         public void run() {
-            Log.d(LOG_TAG, "MyRun#" + startId + " start, time = " + time);
+            Log.d(LOG_TAG, "MyRun#" + startId + "  start, time = " + time);
             try {
                 TimeUnit.SECONDS.sleep(time);
             } catch (InterruptedException e) {
@@ -57,7 +57,7 @@ public class MyService extends Service {
             } catch (NullPointerException e) {
                 Log.d(LOG_TAG, "MyRun#" + startId + " error, null pointer");
             }
-            stop();
+            //stop();
         }
         void stop() {
             Log.d(LOG_TAG, "MyRun#" + startId + " end, stopSelf(" + startId + ")");
